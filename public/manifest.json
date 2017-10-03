@@ -1,0 +1,8 @@
+{
+  "short_name": "ToDo",
+  "name": "ToDo with React+Redux",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
