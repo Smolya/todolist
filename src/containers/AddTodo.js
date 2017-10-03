@@ -7,11 +7,14 @@ import InputForm from '../components/InputForm'
 class AddTodo extends Component {
     render() {
         const { addNewTodo } = this.props;
-        return (
-            <InputForm text={'Name'} content={'Description'} onClick={addNewTodo} btnName={'Add'} />
-        );
+        return <InputForm text={'Name'}
+                          content={'Description'}
+                          onClick={addNewTodo}
+                          btnName={'Add'}
+        />;
     }
 }
+
 
 function mapDispatchToProps(dispatch) {
     return {

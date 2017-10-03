@@ -1,6 +1,5 @@
 import React from 'react';
 import { Component } from 'react';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { applyEditTodo } from '../actions/actions';
 import InputForm from '../components/InputForm';
@@ -8,21 +7,23 @@ import InputForm from '../components/InputForm';
 
 class Task extends Component {
     render() {
-        const { todos, onApplyEditTodo, id } = this.props;
+        const { todos, onApplyEditTodo } = this.props;
+        const id = this.props.params.id;
 
         const editTodo = todos.filter((todo) => {
             return todo.id === id;
         });
 
-        return (
-            <InputForm text={editTodo[0].text} content={editTodo[0].content} onClick={(text, content) => onApplyEditTodo(text, content, id)} btnName={'EDIT'}/>
-        );
+        return <InputForm text={editTodo[0].text}
+                          content={editTodo[0].content}
+                          onClick={(text, content) => onApplyEditTodo(text, content, id)}
+                          btnName={'EDIT'}
+        />;
     }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
-        id: ownProps.params.id,
         todos: state.todos
     };
 }
@@ -34,4 +35,4 @@ function mapDispatchToProps(dispatch) {
 
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Task));
+export default connect(mapStateToProps, mapDispatchToProps)(Task);

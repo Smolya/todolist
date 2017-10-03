@@ -7,12 +7,21 @@ export default function Todo(props) {
         textDecoration: completed ? 'line-through' : 'none',
         display: 'inline-block',
         width: '150px'
-    }
+    };
 
-    return (
-        <div>
-            <li onClick={onClick} style={style}>{text}</li>
-            <button onClick={onEditTodo}> EDIT</button>
-        </div>
-    );
+    if (completed) {
+        return (
+            <div>
+                <input type="checkbox" checked onClick={onClick}/><label style={style}>{text}</label>
+                <button onClick={onEditTodo}> EDIT</button>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <input type="checkbox" onClick={onClick} /><label style={style}>{text}</label>
+                <button onClick={onEditTodo}> EDIT</button>
+            </div>
+        );
+    }
 }
